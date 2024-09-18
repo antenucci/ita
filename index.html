@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aventura na Itália</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+    }
+
+    #container {
+      background-color: white;
+      border: 2px solid #ccc;
+      padding: 20px;
+      width: 80%;
+      max-width: 800px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    #storyText {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    #sceneImage {
+      width: 100%;
+      height: auto;
+      max-height: 400px;
+      margin-bottom: 20px;
+    }
+
+    button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      margin: 5px 0;
+      font-size: 16px;
+      background-color: #0059ff;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    button:hover {
+      background-color: #050655;
+    }
+
+    #choices {
+      display: flex;
+      flex-direction: column;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <h1>Aventura na Itália</h1>
+    <div id="storyText">
+      Você está em uma pequena vila no coração da Toscana. Em um vilarejo antigo e misterioso, cercado por colinas e vinhedos, há um rumor de que um tesouro perdido foi escondido nas ruínas de um castelo. O que você fará?
+    </div>
+    <img id="sceneImage" src="https://www.fredtour.com.br/wp-content/uploads/2017/10/portofino-cruise-over-xlarge.jpg" alt="Vila na Toscana" />
+    <div id="choices">
+      <button onclick="choosePath('explorar o castelo')">Explorar o castelo antigo</button>
+      <button onclick="choosePath('visitar o mercado')">Visitar o mercado local</button>
+      <button onclick="choosePath('falar com os habitantes')">Falar com os habitantes da vila</button>
+    </div>
+  </div>
+
+  <script>
+    function choosePath(option) {
+      const storyText = document.getElementById('storyText');
+      const sceneImage = document.getElementById('sceneImage');
+
+      // Primeira camada de escolhas
+      if (option === 'explorar o castelo') {
+        storyText.innerText = 'Você decide explorar o castelo antigo, localizado no topo da colina. Ao chegar, você nota que a entrada está coberta de hera e uma sensação de mistério paira no ar. O que você fará?';
+        sceneImage.src = 'https://rotasdeviagem.com.br/wp-content/uploads/2020/09/castello-odescalchi-italia.jpg';
+        updateChoices('entrar no castelo', 'explorar os arredores', 'voltar para a vila');
+      } else if (option === 'visitar o mercado') {
+        storyText.innerText = 'Você vai até o mercado local, onde encontra artesanatos e comidas típicas. Um vendedor misterioso lhe oferece um mapa antigo da região, alegando que ele leva ao tesouro perdido. O que você fará?';
+        sceneImage.src = 'https://storage.googleapis.com/mytour-prod/blog/1653571460100_market-3720612-1280-jpg.jpeg';
+        updateChoices('comprar o mapa', 'continuar explorando o mercado', 'voltar para a vila');
+      } else if (option === 'falar com os habitantes') {
+        storyText.innerText = 'Você começa a conversar com os habitantes da vila. Eles contam lendas antigas sobre um tesouro amaldiçoado e sobre a misteriosa família que governava o castelo. Um ancião se aproxima e oferece mais detalhes. O que você fará?';
+        sceneImage.src = 'https://comunitaitaliana.com/wp-content/uploads/2023/12/populacao-da-italia-cai-para-menos-de-59-milhoes-de-pessoas-2.jpeg';
+        updateChoices('ouvir a história do ancião', 'seguir para o castelo', 'voltar para a vila');
+      }
+
+      // Escolhas no castelo
+      else if (option === 'entrar no castelo') {
+        storyText.innerText = 'Você entra no castelo escuro e úmido. Ao caminhar pelos corredores, você encontra uma sala com um grande baú. No entanto, uma sombra se move no canto do olho. O que você fará?';
+        sceneImage.src = 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhDVrXffZ9CxnXoYq2Upr0_gPuw2VNHOrwKfyPQIqK43GNzQVQbbPlpKvddAFbDW94hY78_zo3y7NFvf-ARjUfl52vUU3GEWEghhs6alz5FFmc8um5qw-HyAPtoOy0NNDDon1O-G1SwawiE/s1600/dark-souls-ii-1371044573352_1280x720.jpg';
+        updateChoices('abrir o baú', 'investigar a sombra', 'sair do castelo');
+      } else if (option === 'explorar os arredores') {
+        storyText.innerText = 'Explorando os arredores do castelo, você encontra uma caverna escondida. A caverna parece não ser visitada há muito tempo. O que você fará?';
+        sceneImage.src = 'https://img.freepik.com/fotos-premium/panorama-de-uma-caverna-escondida-dentro-de-uma-luz-solar-de-montanha-rompe-buracos-na-parede-ilustracao-3d_86390-7981.jpg';
+        updateChoices('entrar na caverna', 'voltar ao castelo', 'voltar para a vila');
+      }
+
+      // Mercado e mapa
+      else if (option === 'comprar o mapa') {
+        storyText.innerText = 'Você compra o mapa do vendedor. Ele indica uma trilha nas montanhas que leva a um local chamado "A Gruta dos Antigos". Você sente uma mistura de curiosidade e medo. O que você fará?';
+        sceneImage.src = 'https://img.elo7.com.br/product/zoom/16D9687/adesivo-mapa-mundi-de-parede-antigo-m52-adesivo-infantil.jpg';
+        updateChoices('seguir o mapa', 'voltar para a vila', 'explorar o mercado');
+      }
+
+      // Escolhas na caverna
+      else if (option === 'entrar na caverna') {
+        storyText.innerText = 'Você entra na caverna escura. Lá dentro, há inscrições antigas nas paredes e um pedestal no centro. O que você fará?';
+        sceneImage.src = 'https://img.freepik.com/fotos-premium/pilares-da-grecia-antiga-classicos-colunas-brancas-pedestais-suporte-isolado-3d-esplendor-obras-primas-de-marmore_938416-656.jpg';
+        updateChoices('examinar o pedestal', 'sair da caverna', 'explorar mais profundamente');
+      } else if (option === 'investigar a sombra') {
+        storyText.innerText = 'Ao seguir a sombra, você descobre que é um gato preto que estava observando você. O gato parece estar guiando você para uma sala secreta. O que você fará?';
+        sceneImage.src = 'cat.jpg';
+        updateChoices('seguir o gato', 'ignorar o gato e abrir o baú', 'sair do castelo');
+      }
+
+      // Finalizações
+      else if (option === 'abrir o baú') {
+        storyText.innerText = 'Você abre o baú e encontra o tesouro perdido! Ouro, joias e relíquias antigas brilham à luz da tocha. Você se torna o novo guardião do tesouro da Toscana.';
+        sceneImage.src = 'https://cdn.pixabay.com/photo/2023/06/14/18/22/ai-generated-8063802_1280.jpg';
+        updateChoices('recomeçar a aventura');
+      } else if (option === 'seguir o gato') {
+        storyText.innerText = 'O gato guia você até uma sala secreta, onde há um diário antigo. O diário revela segredos sobre a história da vila e o verdadeiro guardião do tesouro. Você decide seguir os passos do diário.';
+        sceneImage.src = 'secret_room.jpg';
+        updateChoices('recomeçar a aventura');
+      } else if (option === 'examinar o pedestal') {
+        storyText.innerText = 'Ao examinar o pedestal, uma luz intensa emana dele, e você é transportado para uma época antiga. Você agora faz parte da história lendária da Toscana.';
+        sceneImage.src = 'https://www.formentini.com.br/italia%20antiga/italia-antiga-05.jpg';
+        updateChoices('recomeçar a aventura');
+      }
+    }
+
+    function updateChoices(choice1, choice2, choice3) {
+      document.getElementById('choices').innerHTML = `
+        <button onclick="choosePath('${choice1}')">${choice1}</button>
+        <button onclick="choosePath('${choice2}')">${choice2}</button>
+        <button onclick="choosePath('${choice3}')">${choice3}</button>
+      `;
+    }
+  </script>
+</body>
+</html>
